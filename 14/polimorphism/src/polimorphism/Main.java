@@ -24,7 +24,7 @@ public class Main {
 		int n = sc.nextInt();
 		
 		for(int i = 0; i < n; i++) {
-			System.out.printf("Product #%d data:", i+1);
+			System.out.printf("Product #%d data: ", i+1);
 			System.out.print("Common, used or imported (c/u/i)? ");
 			char type = sc.next().charAt(0);
 			System.out.print("Name: ");
