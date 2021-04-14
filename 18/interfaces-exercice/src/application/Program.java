@@ -17,8 +17,7 @@ public class Program {
 		
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		
-		/*
+
 		System.out.println("Enter contract data");
 		System.out.print("Number: ");
 		int number = sc.nextInt();
@@ -27,22 +26,18 @@ public class Program {
 		String dateString = sc.nextLine();
 		System.out.print("Contract value: ");
 		double totalValue = sc.nextDouble();
-		System.out.print("Enter number of installments: ");
-		int numInstallments = sc.nextInt();
-		System.out.println("Installments:");
-		*/
-		
-		int number = 8028;
-		String dateString = "25/06/2018";
-		double totalValue = 600.00;
-		int numInstallments = 3;
-		
+
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate date = LocalDate.parse(dateString, formatter);
 		Contract contract = new Contract(number, date, totalValue);
+		
+		System.out.print("Enter number of installments: ");
+		int numInstallments = sc.nextInt();
+		
 		ContractService contractService = new ContractService(new PayPalService());
 		contractService.processContract(contract, numInstallments);
 		
+		System.out.println("Installments:");
 		for (Installment installment : contract.getIntallments()) {
 			System.out.println(installment.toString());
 		}
